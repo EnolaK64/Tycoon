@@ -11,7 +11,7 @@ const Client = new Discord.Client({
 //slash command
 const data = new SlashCommandBuilder()
     .setName("ping")
-    .setDescription("renvoie pong")
+    .setDescription("renvoie pong");
 
 
     //bot token
