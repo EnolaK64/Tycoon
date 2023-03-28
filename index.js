@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { TOKEN } = require("token.js")
+const { TOKEN } = require("./token.js")
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { Client, GatewayIntentBits } = require('discord.js');
 
