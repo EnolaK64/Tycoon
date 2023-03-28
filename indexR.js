@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { TOKEN } = require("G:/Mon Drive")
+const { TOKEN } = require("C:\Users\kevin\Documents\token")
 const { SlashCommandBuilder} = require("@discordjs/builders");
 const Client = new Discord.Client({
     intents:[
