@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const { TOKEN } = require("token.js")
 const { SlashCommandBuilder} = require("@discordjs/builders");
-const Client = new Dsicord.Client({
+const Client = new Discord.Client({
     intents:[
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES
