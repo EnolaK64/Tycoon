@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { TOKEN } = require("./token")
+const { TOKEN } = require("G:/Mon Drive")
 const { SlashCommandBuilder} = require("@discordjs/builders");
 const Client = new Discord.Client({
     intents:[
@@ -24,7 +24,7 @@ Client.on("ready", () => {
     //Client.application.commands.create(data);
 
     //def command just in my server
-    Client.guilds.cache.get("1009915692977504348").commande.create(data)
+    Client.guilds.cache.get("1009915692977504348").commands.create(data)
 
 
     console.log("bot ready");

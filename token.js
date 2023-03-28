@@ -1,1 +1,0 @@
-exports.TOKEN = "MTA4NjIxNjQ5ODA1OTY4MTg3Mg.GBQT6F.OVtioBgnsXKgtCa_HCEwi4oUH2l3c63qwhPnqY"
