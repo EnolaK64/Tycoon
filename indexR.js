@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { TOKEN } = require("C:\Users\kevin\Documents\token")
+const { TOKEN } = require("../token.js")
 const { SlashCommandBuilder} = require("@discordjs/builders");
 const Client = new Discord.Client({
     intents:[
@@ -16,6 +16,17 @@ const data = new SlashCommandBuilder()
 
     //bot token
 Client.login(TOKEN)
+
+
+//detect interaction
+
+Client.on("interactionCreate", interaction =>{
+    if(interaction.isCommand()){
+        if(interaction.commandName === "ping"){
+            interaction.reply("pong");
+        }
+    }
+})
 
 //bot connection
 Client.on("ready", () => {
