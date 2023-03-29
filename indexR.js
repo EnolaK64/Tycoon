@@ -1,3 +1,4 @@
+const fs = require('fs');
 const Discord = require("discord.js")
 const { TOKEN } = require("../token.js")
 const { SlashCommandBuilder} = require("@discordjs/builders");
@@ -18,7 +19,15 @@ const data2 =
     new SlashCommandBuilder()
     .setName("bonjour")
     .setDescription("Dire bonjour au bot (il te repond Bonjour)")
-
+    
+    const dataSet = new SlashCommandBuilder()
+    .setName('set')
+    .setDescription('Stocke les données dans un fichier JSON')
+    .addStringOption(option =>
+        option.setName('input')
+            .setDescription('Les données à stocker')
+            .setRequired(true));
+    
     //bot token
 Client.login(TOKEN)
 
@@ -38,6 +47,15 @@ Client.on("interactionCreate", interaction =>{
             interaction.reply("Bonjour à toi.");
         }
     }
+
+    if (interaction.isCommand() && interaction.commandName === 'set') {
+        const input = interaction.options.getString('input');
+        const data = { input: input };
+        fs.writeFileSync('bdd.json', JSON.stringify(data));
+        (async () => {
+            await interaction.reply("c'est set !");
+        })();
+    }
 })
 
 //bot connection
@@ -46,6 +64,7 @@ Client.on("ready", () => {
     //def command on all servers
     Client.application.commands.create(data);
     Client.application.commands.create(data2);
+    Client.application.commands.create(dataSet);
 
     //def command just in my server
     /*console.log(Client.guilds.cache.get("1009915692977504348").commands.cache);
