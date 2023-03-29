@@ -9,21 +9,33 @@ const Client = new Discord.Client({
 });
 
 //slash command
-const data = new SlashCommandBuilder()
+const data = 
+    new SlashCommandBuilder()
     .setName("ping")
     .setDescription("renvoie pong");
 
+const data2 =
+    new SlashCommandBuilder()
+    .setName("bonjour")
+    .setDescription("Dire bonjour au bot (il te repond Bonjour)")
 
     //bot token
 Client.login(TOKEN)
 
 
-//detect interaction
-
+//detect interactions
 Client.on("interactionCreate", interaction =>{
+
+    //ping
     if(interaction.isCommand()){
         if(interaction.commandName === "ping"){
             interaction.reply("pong");
+        }
+    }
+    //bonjour
+    if(interaction.isCommand()){
+        if(interaction.commandName === "bonjour"){
+            interaction.reply("Bonjour à toi.");
         }
     }
 })
@@ -32,10 +44,20 @@ Client.on("interactionCreate", interaction =>{
 Client.on("ready", () => {
 
     //def command on all servers
-    //Client.application.commands.create(data);
+    Client.application.commands.create(data);
+    Client.application.commands.create(data2);
 
     //def command just in my server
-    Client.guilds.cache.get("1009915692977504348").commands.create(data)
+    /*console.log(Client.guilds.cache.get("1009915692977504348").commands.cache);
+    Client.guilds.cache.get("1009915692977504348").commands.fetch()
+    console.log(Client.guilds.cache.get("1009915692977504348").commands.cache);
+    
+    
+    Client.guilds.cache.get("1009915692977504348").commands.cache.map(command =>{
+        command.delete()
+    });*/
+    //Client.guilds.cache.get("1009915692977504348").commands.create(data)
+    
 
 
     console.log("bot ready");
