@@ -53,22 +53,27 @@ Client.on("interactionCreate", interaction => {
     }
 
     if (interaction.isCommand() && interaction.commandName === 'set') {
+        console.log('Commande /set appelée');
         const input = interaction.options.getString('input');
+        console.log('Données entrées par l\'utilisateur :', input);
         const userId = interaction.user.id;
         const channelId = interaction.channel.id;
         const data = { input: input, userId: userId, channelId: channelId };
+        console.log('Données à stocker :', data);
         let storedData = [];
         try {
             storedData = JSON.parse(fs.readFileSync('bdd.json'));
+            console.log('Données précédemment stockées :', storedData);
         } catch (error) {
             console.error(error);
         }
         storedData.push(data);
+        fs.writeFileSync('bdd.json', JSON.stringify(storedData));
+        console.log('Données sauvegardées dans le fichier bdd.json');
         (async () => {
             await interaction.reply("c'est set !");
         })();
     }
-
     if (interaction.isCommand() && interaction.commandName === 'get') {
         const data = JSON.parse(fs.readFileSync('bdd.json'));
         (async () => {
