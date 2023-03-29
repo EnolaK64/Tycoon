@@ -106,4 +106,5 @@ Client.on("ready", () => {
 
 
     console.log("bot ready");
+
 })
